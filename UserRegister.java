@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class UserRegister {
 	String firstName;
 	String lastName;
+	String emailID;
 	boolean x;
 	static Scanner input = new Scanner(System.in);
 
@@ -36,12 +37,31 @@ public class UserRegister {
 			String formula2 = "^[A-Z][A-Za-z]{2,}$";
 			Pattern code = Pattern.compile(formula2);
 			Matcher check = code.matcher(lastName);
+			if (check.matches())
+				x = true;
+			else {
+				System.out.println(
+						firstName + ", your last Name entered is not following the pattern.\nPlease try again.");
+				x = false;
+			}
+		} while (!x);
+		userEmailID();
+	}
+
+	public void userEmailID() {
+		do {
+			// EMAIL-ID
+			System.out.println(firstName + " " + lastName + ", enter your Email-ID: ");
+			emailID = input.next();
+			String formula3 = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@(?:[a-zA-Z0-9]+\\.){1,2}[a-zA-Z]+$";
+			Pattern code = Pattern.compile(formula3);
+			Matcher check = code.matcher(emailID);
 			if (check.matches()) {
 				x = true;
 				System.out.println("Welcome " + firstName + " " + lastName + "!");
 			} else {
-				System.out.println(
-						firstName + ", your last Name entered is not following the pattern.\nPlease try again.");
+				System.out.println(firstName + " " + lastName
+						+ ", your Email-ID entered is not following the pattern.\nPlease try again.");
 				x = false;
 			}
 		} while (!x);
