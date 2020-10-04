@@ -93,11 +93,11 @@ public class UserRegister {
 
 	public void userPassword() {
 		do {
-			// PASSWORD RULES-1,2,3
+			// PASSWORD RULES-1,2,3,4
 			System.out.println(firstName + " " + lastName
-					+ ", enter your password:\n(Rule-1:Minimum 8 characters\n Rule-2:Atleast one upper case\n Rule-3:Atleast one numeric) ");
+					+ ", enter your password:\n(Rule-1:Minimum 8 characters\n Rule-2:Atleast one upper case\n Rule-3:Atleast one numeric\n Rule-4:Exactly one special character) ");
 			password = input2.nextLine();
-			String formula5 = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
+			String formula5 = "^(?=.*[A-Z])(?=.*[0-9])[\\w^_]*[\\W_][\\w^_]*{8,}$";
 			Pattern code = Pattern.compile(formula5);
 			Matcher check = code.matcher(password);
 			if (check.matches()) {
