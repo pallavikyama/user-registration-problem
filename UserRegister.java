@@ -54,10 +54,10 @@ public class UserRegister {
 
 	public void userEmailID() {
 		do {
-			// EMAIL-ID
+			// VARIOUS SAMPLE EMAIL-ID TESTING
 			System.out.println(firstName + " " + lastName + ", enter your Email-ID: ");
 			emailID = input.next();
-			String formula3 = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@(?:[a-zA-Z0-9]+\\.){1,2}[a-zA-Z]+$";
+			String formula3 = "^[a-zA-Z0-9]+(?:[_\\-\\+\\.][a-zA-Z0-9]+)*@(?:[a-zA-Z0-9]+\\.){1,2}[a-zA-Z]{2,}$";
 			Pattern code = Pattern.compile(formula3);
 			Matcher check = code.matcher(emailID);
 			if (check.matches())
