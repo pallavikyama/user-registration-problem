@@ -9,9 +9,11 @@ public class UserRegister {
 	String lastName;
 	String emailID;
 	String mobileNo;
+	String password;
 	boolean x;
 	static Scanner input = new Scanner(System.in);
 	static Scanner input1 = new Scanner(System.in);
+	static Scanner input2 = new Scanner(System.in);
 
 	public void userFirstName() {
 		do {
@@ -78,12 +80,31 @@ public class UserRegister {
 			String formula4 = "^[0-9]{2} [0-9]{10}$";
 			Pattern code = Pattern.compile(formula4);
 			Matcher check = code.matcher(mobileNo);
+			if (check.matches())
+				x = true;
+			else {
+				System.out.println(firstName + " " + lastName
+						+ ", your Mobile Number entered is not following the pattern.\nPlease try again.");
+				x = false;
+			}
+		} while (!x);
+		userPassword();
+	}
+
+	public void userPassword() {
+		do {
+			// PASSWORD RULE-1
+			System.out.println(firstName + " " + lastName + ", enter your password:\n(Rule-1:Minimum 8 characters) ");
+			password = input2.nextLine();
+			String formula5 = "^.{8,}$";
+			Pattern code = Pattern.compile(formula5);
+			Matcher check = code.matcher(password);
 			if (check.matches()) {
 				x = true;
 				System.out.println("Welcome " + firstName + " " + lastName + "!");
 			} else {
 				System.out.println(firstName + " " + lastName
-						+ ", your Mobile Number entered is not following the pattern.\nPlease try again.");
+						+ ", your Password entered is not following the pattern.\nPlease try again.");
 				x = false;
 			}
 		} while (!x);
@@ -95,5 +116,6 @@ public class UserRegister {
 		user1.userFirstName();
 		input.close();
 		input1.close();
+		input2.close();
 	}
 }
