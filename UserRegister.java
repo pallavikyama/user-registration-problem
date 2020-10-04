@@ -111,6 +111,41 @@ public class UserRegister {
 		} while (!x);
 	}
 
+	public boolean mainUserFirstName(String mainFirstName) {
+		String formula1 = "^[A-Z][A-Za-z]{2,}$";
+		Pattern code = Pattern.compile(formula1);
+		Matcher check = code.matcher(mainFirstName);
+		return check.matches();
+	}
+
+	public boolean mainUserLastName(String mainLastName) {
+		String formula2 = "^[A-Z][A-Za-z]{2,}$";
+		Pattern code = Pattern.compile(formula2);
+		Matcher check = code.matcher(mainLastName);
+		return check.matches();
+	}
+
+	public boolean mainUserEmailID(String mainEmailID) {
+		String formula3 = "^[a-zA-Z0-9]+(?:[_\\-\\+\\.][a-zA-Z0-9]+)*@(?:[a-zA-Z0-9]+\\.){1,2}[a-zA-Z]{2,}$";
+		Pattern code = Pattern.compile(formula3);
+		Matcher check = code.matcher(mainEmailID);
+		return check.matches();
+	}
+
+	public boolean mainUserMobileNo(String mainMobileNo) {
+		String formula4 = "^[0-9]{2} [0-9]{10}$";
+		Pattern code = Pattern.compile(formula4);
+		Matcher check = code.matcher(mainMobileNo);
+		return check.matches();
+	}
+
+	public boolean mainUserPassword(String mainPassword) {
+		String formula5 = "^(?=.*[A-Z])(?=.*[0-9])[\\w^_]*[\\W_][\\w^_]*{8,}$";
+		Pattern code = Pattern.compile(formula5);
+		Matcher check = code.matcher(mainPassword);
+		return check.matches();
+	}
+
 	public static void main(String[] args) {
 		System.out.println("NEW USER REGISTRATION.");
 		UserRegister user1 = new UserRegister();
