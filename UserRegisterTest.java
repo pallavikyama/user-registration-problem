@@ -41,14 +41,20 @@ public class UserRegisterTest {
 		UserRegister objEmailID = new UserRegister();
 
 		// EMAIL-ID NAME HAPPY TEST-CASE
-		boolean expectedEntry1 = true;
-		boolean actualEntry1 = objEmailID.mainUserEmailID("abc.xyz@bl.co.in");
-		assertEquals(expectedEntry1, actualEntry1);
+		String[] EmailArray1 = new String[] { "abc.xyz@bl.co.in", "abc@bl.co.in", "abc.xyz@bl.com" };
+		for (int index = 0; index < EmailArray1.length; index++) {
+			boolean expectedEntry1 = true;
+			boolean actualEntry1 = objEmailID.mainUserEmailID(EmailArray1[index]);
+			assertEquals(expectedEntry1, actualEntry1);
+		}
 
 		// EMAIL-ID NAME SAD TEST-CASE
-		boolean expectedEntry2 = false;
-		boolean actualEntry2 = objEmailID.mainUserEmailID(".fgh@.in");
-		assertEquals(expectedEntry2, actualEntry2);
+		String[] EmailArray2 = new String[] { ".abc.xyz@bl.co.in", "abc@bl.co.in.", "abc.xyz@.bl.com" };
+		for (int index = 0; index < EmailArray1.length; index++) {
+			boolean expectedEntry2 = false;
+			boolean actualEntry2 = objEmailID.mainUserEmailID(EmailArray2[index]);
+			assertEquals(expectedEntry2, actualEntry2);
+		}
 	}
 
 	@Test
