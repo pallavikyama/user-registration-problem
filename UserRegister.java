@@ -8,8 +8,10 @@ public class UserRegister {
 	String firstName;
 	String lastName;
 	String emailID;
+	String mobileNo;
 	boolean x;
 	static Scanner input = new Scanner(System.in);
+	static Scanner input1 = new Scanner(System.in);
 
 	public void userFirstName() {
 		do {
@@ -56,12 +58,32 @@ public class UserRegister {
 			String formula3 = "^[a-zA-Z0-9]+(?:\\.[a-zA-Z0-9]+)*@(?:[a-zA-Z0-9]+\\.){1,2}[a-zA-Z]+$";
 			Pattern code = Pattern.compile(formula3);
 			Matcher check = code.matcher(emailID);
+			if (check.matches())
+				x = true;
+			else {
+				System.out.println(firstName + " " + lastName
+						+ ", your Email-ID entered is not following the pattern.\nPlease try again.");
+				x = false;
+			}
+		} while (!x);
+		userMobileNo();
+	}
+
+	public void userMobileNo() {
+		do {
+			// MOBILE NUMBER
+			System.out.println(firstName + " " + lastName
+					+ ", enter your mobile number\n(2-digit country code, followed by a space, followed by a 10-digit mobile number): ");
+			mobileNo = input1.nextLine();
+			String formula4 = "^[0-9]{2} [0-9]{10}$";
+			Pattern code = Pattern.compile(formula4);
+			Matcher check = code.matcher(mobileNo);
 			if (check.matches()) {
 				x = true;
 				System.out.println("Welcome " + firstName + " " + lastName + "!");
 			} else {
 				System.out.println(firstName + " " + lastName
-						+ ", your Email-ID entered is not following the pattern.\nPlease try again.");
+						+ ", your Mobile Number entered is not following the pattern.\nPlease try again.");
 				x = false;
 			}
 		} while (!x);
@@ -72,5 +94,6 @@ public class UserRegister {
 		UserRegister user1 = new UserRegister();
 		user1.userFirstName();
 		input.close();
+		input1.close();
 	}
 }
